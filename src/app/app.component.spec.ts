@@ -26,10 +26,10 @@ describe('AppComponent', () => {
     expect(app.title).toEqual('angular-gallery-app');
   });
 
-  it('should render title in a h1 tag', () => {
+  it('should render <h2>element h2!</h2>', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('h1').textContent).toContain('Welcome to angular-gallery-app!');
+    expect(compiled.querySelector('h2').textContent).toContain('element h2!');
   });
 });
