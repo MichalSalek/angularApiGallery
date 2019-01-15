@@ -1,0 +1,13 @@
+@import '../../globalVariables.scss';
+
+
+.footer {
+    &__text {
+        position: fixed;
+        bottom: 10px;
+        right: 20px;
+        font-size: 0.7rem;
+        color: $base-color;
+        font-weight: 600;
+    }
+}

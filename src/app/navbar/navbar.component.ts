@@ -1,21 +1,16 @@
-import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder } from '@angular/forms';
+import { Component } from '@angular/core';
+
 
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.scss']
 })
-export class NavbarComponent implements OnInit {
+export class NavbarComponent {
 
-  public radioGroupForm: FormGroup;
 
-  constructor(private formBuilder: FormBuilder) {}
+  constructor() {}
 
-  ngOnInit() {
-    this.radioGroupForm = this.formBuilder.group({
-      'model': 1
-    });
-  }
+
 
 }

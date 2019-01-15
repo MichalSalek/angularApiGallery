@@ -1,0 +1,13 @@
+@import '../../globalVariables.scss';
+
+.navbar {
+  width: 85%;
+  margin: 1rem auto;
+  display: flex;
+  justify-self: center;
+  &__btn {
+    flex-grow: 1;
+    height: 50px;
+    font-size: 1.3rem;
+  }
+}

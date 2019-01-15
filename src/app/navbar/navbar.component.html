@@ -1,6 +1,12 @@
 <nav>
-  <header class="navbar">
-    <a class="navbar__btnSlider" routerLink="/slider">Slider</a>
-    <a class="navbar__btnSearch" routerLink="/search">Szukaj</a>
+  <header>
+      <mat-button-toggle-group name="navbar" aria-label="Navigation bar" class="navbar">
+          <mat-button-toggle class="navbar__btn" value="slider" routerLink="/slider">Slider</mat-button-toggle>
+          <mat-button-toggle class="navbar__btn" value="search" routerLink="/search">Search</mat-button-toggle>
+        </mat-button-toggle-group>
   </header>
+
+  
+
+
 </nav>
