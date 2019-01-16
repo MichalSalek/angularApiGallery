@@ -1,0 +1,13 @@
+.form {
+    width: fit-content;
+    margin: auto;
+    &__input, &__select {
+        width: calc(95vw - 130px - 2rem);
+        max-width: 500px;
+        margin: .5rem 1rem;
+    }
+    &__select {
+        max-width: 130px;
+        margin: auto;
+    }
+}

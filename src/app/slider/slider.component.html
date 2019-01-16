@@ -1,13 +1,10 @@
-<main class='slider'>
-<ngb-carousel *ngIf="images" [showNavigationArrows]="false" [showNavigationIndicators]="false" (slide)="nextSlide($event)">
-    <ng-template ngbSlide>
-      <img [src]="images[0]" alt="Random first slide">
-    </ng-template>
-    <ng-template ngbSlide>
-      <img [src]="images[1]" alt="Random second slide">
-    </ng-template>
-    <ng-template ngbSlide>
-      <img [src]="images[2]" alt="Random third slide">
+<main>
+  <h2>Here are 10 random photos from Unsplash. Have fun!</h2>
+  <p>{{$randomPhotoResponse.description}}</p>
+<ngb-carousel class='slider' *ngIf="images" [showNavigationArrows]="false" [showNavigationIndicators]="false" (slide)="nextSlide($event)">
+    <ng-template ngbSlide *ngFor='let slide of imagestest; let i = index'>
+      <img class='slider__img' [src]="$randomPhotoResponse.urls.regular" alt="Random slide"> 
     </ng-template>
   </ngb-carousel>
+
 </main>

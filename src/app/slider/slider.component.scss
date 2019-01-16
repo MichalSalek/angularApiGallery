@@ -1,5 +1,9 @@
 .slider {
     width: fit-content;
-    max-width: 1080px;
     margin: auto;
+    &__img{
+        max-width: 90vw;
+        max-height: calc( 100vh - 15vw );
+    }
 }
+
