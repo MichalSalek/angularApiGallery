@@ -1,0 +1,12 @@
+@import '../../globalVariables.scss';
+
+.landing {
+    width: 100%;
+    text-align: center;
+    &__h1 {
+        color: $base-color;
+    }
+    &__h5 {
+        color: rgb(100, 100, 100);
+    }
+}

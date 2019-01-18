@@ -1,10 +1,9 @@
 <main>
-  <h2>Here are 10 random photos from Unsplash. Have fun!</h2>
-  <p>{{$randomPhotoResponse.description}}</p>
-<ngb-carousel class='slider' *ngIf="images" [showNavigationArrows]="false" [showNavigationIndicators]="false" (slide)="nextSlide($event)">
-    <ng-template ngbSlide *ngFor='let slide of imagestest; let i = index'>
-      <img class='slider__img' [src]="$randomPhotoResponse.urls.regular" alt="Random slide"> 
+  <ngb-carousel class='slider' *ngIf="imagesAmount" [showNavigationArrows]="false" [showNavigationIndicators]="false"
+    (slide)="getRandomPhoto()">
+    <ng-template ngbSlide *ngFor='let slide of imagesAmount'>
+      <img class='slider__img' src="{{$randomPhotoResponse.urls.raw}}&fit=crop&w=1000&h=500" alt={{$randomPhotoResponse.description}}>
+      <p class='slider__caption'>{{$randomPhotoResponse.description}}</p>
     </ng-template>
   </ngb-carousel>
-
 </main>

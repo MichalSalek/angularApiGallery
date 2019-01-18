@@ -1,13 +1,61 @@
 .form {
     width: fit-content;
+    display: flex;
+    justify-content: space-around;
     margin: auto;
+    position: relative;
+    max-width: 500px;
     &__input, &__select {
-        width: calc(95vw - 130px - 2rem);
-        max-width: 500px;
         margin: .5rem 1rem;
+        width: 45vw;
+    }
+    &__input {
+        min-width: 80px;
     }
     &__select {
-        max-width: 130px;
-        margin: auto;
+        width: 80px;
+    }
+    &__submit {
+        position: absolute;
+        border: none;
+        background: none;
+        right: 20px;
+        top: 25px;
+        cursor: pointer;
     }
 }
+
+.imgList {
+display: flex;
+flex-direction: column;
+margin-top: 3rem;
+
+    &__cont {
+        display: flex;
+        justify-content: center;
+        margin: 3rem auto;
+        
+        &__pic {
+            position: relative;
+            max-width: 70vw;
+            &__caption {
+                font-size: 0.8rem;
+                color: rgb(73, 73, 73);
+                text-align: center;
+                max-width: 350px;
+                margin: 0.5rem auto;
+            }
+        }
+
+        &__like {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: fit-content;
+            position: relative;
+            margin-left: 5px;
+            opacity: .75;
+        } 
+    }
+}
+

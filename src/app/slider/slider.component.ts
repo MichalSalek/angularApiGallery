@@ -2,6 +2,10 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap';
 import { GlobalService } from '../global.service';
 import { OnePhoto } from '../model/interfaces';
+import { HttpErrorResponse } from '@angular/common/http';
+
+import { Subscription } from 'rxjs';
+
 @Component({
   selector: 'app-slider',
   templateUrl: './slider.component.html',
@@ -9,50 +13,48 @@ import { OnePhoto } from '../model/interfaces';
   providers: [NgbCarouselConfig]
 })
 export class SliderComponent implements OnInit, OnDestroy {
-  constructor(config: NgbCarouselConfig, private gService: GlobalService) {
-    config.interval = 1500000;
-    config.wrap = true;
-    config.keyboard = false;
-    config.pauseOnHover = false;
-    this.getRandomPhoto();
-  }
 
-  images = [1, 2, 3].map(() => `https://picsum.photos/900/500?random&t=${Math.random()}`);
+  private subscription: Subscription;
 
-  imagestest = new Array(10);
+  imagesAmount = new Array(2);
 
   $randomPhotoResponse: OnePhoto = {
-    description: 'Loading',
+    description: 'Loading...',
     urls: {
-      // tslint:disable-next-line:max-line-length
-      regular: 'http://pol.faq.panasonic.com/euf/assets/images/panasonic/answer_images/UHD-FullHD-1080.jpg'
+      raw: 'https://mir-s3-cdn-cf.behance.net/project_modules/disp/35771931234507.564a1d2403b3a.gif'
     }
   };
 
-
-
+  constructor(config: NgbCarouselConfig, private gService: GlobalService) {
+    config.interval = 6000;
+    config.wrap = true;
+    config.keyboard = false;
+    config.pauseOnHover = false;
+  }
 
   getRandomPhoto() {
-    this.gService.randomPhoto().subscribe(res => {
+    this.subscription = this.gService.randomPhoto().subscribe(
+      res => {
       this.$randomPhotoResponse = res;
+      console.log(res);
+    },
+    (error: HttpErrorResponse) => {
+      console.warn(error);
+      console.error(error.status);
+      if (error.status === 403) {
+        this.$randomPhotoResponse.description = 'Rate Limit Exceeded! Please, come back in one hour.';
+        this.$randomPhotoResponse.urls.raw = 'https://images.unsplash.com/photo-1467664631004-58beab1ece0d?ixlib=rb-1.2.1';
+      }
     });
   }
 
   ngOnInit() {
-    console.log('OnInit:');
-    console.log('typeof random photo response:');
-    console.log(typeof this.$randomPhotoResponse);
-  }
-
-  nextSlide = (event) => {
-    console.log('Slide:');
     this.getRandomPhoto();
-
   }
+
 
   ngOnDestroy() {
-    console.log('slider zniszczony');
+    this.subscription.unsubscribe();
   }
-
 }
 

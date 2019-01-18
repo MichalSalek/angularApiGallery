@@ -1,6 +1,10 @@
 export interface OnePhoto {
     description?: string;
     urls?: {
-      regular: string;
+      raw: string;
     };
+  }
+
+  export interface PhotoList {
+    results?: Array<any>;
   }

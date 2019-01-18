@@ -1,17 +1,32 @@
-<form [formGroup]="searchForm" (ngSubmit)="searchSubmit(searchForm.value)" class="form">
-
+<form [formGroup]="searchForm" (ngSubmit)="getPhotosList()" class="form">
   <mat-form-field class="form__select">
     <mat-select formControlName="searchFormAmount" placeholder="Pics per page">
-      <mat-option *ngFor="let howmuch of picsPerPage" [value]="howmuch">
+      <mat-option *ngFor="let howmuch of picsPerPage" [value]="howmuch" (click)="fillParams(searchForm.value)">
         {{howmuch}}
       </mat-option>
     </mat-select>
   </mat-form-field>
 
   <mat-form-field class="form__input">
-    <input formControlName="searchFormKeyword" matInput placeholder="Enter a keyword(s)">
+    <input formControlName="searchFormKeyword" matInput placeholder="Enter a keyword(s)" autocomplete="off" (change)="fillParams(searchForm.value)">
   </mat-form-field>
 
-  <button type="submit" [disabled]="!searchForm.valid">xD</button>
-
+  <button type="submit" [disabled]="!searchForm.valid" class="form__submit">
+    <fa-icon [icon]="faSearch"></fa-icon>
+  </button>
 </form>
+
+<section class="imgList">
+  <div class="imgList__cont" *ngFor="let element of $searchPhotoResponse.results">
+    <picture>
+      <source media="(max-width: 799px)" srcset="{{element.urls.raw}}&fit=crop&w=500">
+      <source media="(min-width: 800px)" srcset="{{element.urls.raw}}&fit=crop&w=1000&h=600">
+      <img class="imgList__cont__pic" src="{{element.urls.raw}}&fit=crop&w=1000&h=600" alt={{element.description}}>
+      <p class="imgList__cont__pic__caption">{{element.description}}</p>
+    </picture>
+    <div class="imgList__cont__like">
+      <fa-icon *ngIf="$searchPhotoResponse.results[0].likes" class="imgList__cont__like__heart" [icon]="faHeart" size="lg"></fa-icon>
+      <p class="imgList__cont__like__count">{{element.likes}} {{$searchPhotoResponse.results[0].likes}}</p>
+    </div>
+  </div>
+</section>

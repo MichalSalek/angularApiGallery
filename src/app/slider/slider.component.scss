@@ -1,9 +1,16 @@
 .slider {
     width: fit-content;
-    margin: auto;
+    margin: 3rem auto 0 auto;
     &__img{
         max-width: 90vw;
-        max-height: calc( 100vh - 15vw );
+        max-height: calc( 100vh - 10rem );
+    }
+    &__caption {
+        font-size: 0.8rem;
+        color: rgb(73, 73, 73);
+        text-align: center;
+        max-width: 350px;
+        margin: 0.5rem auto;
     }
 }
 
