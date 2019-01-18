@@ -26,7 +26,7 @@ export class SliderComponent implements OnInit, OnDestroy {
   };
 
   constructor(config: NgbCarouselConfig, private gService: GlobalService) {
-    config.interval = 6000;
+    config.interval = 6000000;
     config.wrap = true;
     config.keyboard = false;
     config.pauseOnHover = false;
@@ -36,7 +36,6 @@ export class SliderComponent implements OnInit, OnDestroy {
     this.subscription = this.gService.randomPhoto().subscribe(
       res => {
       this.$randomPhotoResponse = res;
-      console.log(res);
     },
     (error: HttpErrorResponse) => {
       console.warn(error);

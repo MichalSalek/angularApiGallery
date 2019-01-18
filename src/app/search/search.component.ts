@@ -6,15 +6,12 @@ import { HttpErrorResponse } from '@angular/common/http';
 
 import { faSearch, faHeart } from '@fortawesome/free-solid-svg-icons';
 
-import { Subscription } from 'rxjs';
 @Component({
   selector: 'app-search',
   templateUrl: './search.component.html',
   styleUrls: ['./search.component.scss']
 })
-export class SearchComponent implements OnInit, OnDestroy {
-
-  private subscription: Subscription;
+export class SearchComponent implements OnInit {
 
   faSearch = faSearch;
   faHeart = faHeart;
@@ -39,7 +36,7 @@ export class SearchComponent implements OnInit, OnDestroy {
   }
 
   getPhotosList() {
-    this.subscription = this.gService.photoList().subscribe(
+    this.gService.photoList().subscribe(
       res => {
       this.$searchPhotoResponse = res;
     },
@@ -47,7 +44,6 @@ export class SearchComponent implements OnInit, OnDestroy {
       console.warn(error);
       console.error(error.status);
       this.$searchPhotoResponse.results.push(this.errorResponse);
-        console.log(this.$searchPhotoResponse);
     },
     () => {
       console.log(this.$searchPhotoResponse);
@@ -65,11 +61,6 @@ export class SearchComponent implements OnInit, OnDestroy {
 
   fillParams(event) {
     this.gService.passSearchParams(event);
-  }
-
-
-  ngOnDestroy() {
-    // this.subscription.unsubscribe();
   }
 }
 

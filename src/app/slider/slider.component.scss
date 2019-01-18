@@ -1,9 +1,20 @@
+* {
+    outline: none;
+}
+
 .slider {
     width: fit-content;
     margin: 3rem auto 0 auto;
-    &__img{
-        max-width: 90vw;
-        max-height: calc( 100vh - 10rem );
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    &__cont {
+        margin: auto;
+        &__img{
+            max-width: 90vw;
+            max-height: calc( 100vh - 10rem );
+            margin: auto;
+        }
     }
     &__caption {
         font-size: 0.8rem;

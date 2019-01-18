@@ -1,9 +1,12 @@
 <main>
-  <ngb-carousel class='slider' *ngIf="imagesAmount" [showNavigationArrows]="false" [showNavigationIndicators]="false"
-    (slide)="getRandomPhoto()">
+  <ngb-carousel *ngIf="imagesAmount" [showNavigationArrows]="false" [showNavigationIndicators]="false" (slide)="getRandomPhoto()">
     <ng-template ngbSlide *ngFor='let slide of imagesAmount'>
-      <img class='slider__img' src="{{$randomPhotoResponse.urls.raw}}&fit=crop&w=1000&h=500" alt={{$randomPhotoResponse.description}}>
-      <p class='slider__caption'>{{$randomPhotoResponse.description}}</p>
+      <div class='slider'>
+        <div class='slider__cont'>
+          <img class='slider__cont__img' src="{{$randomPhotoResponse.urls.raw}}&fit=crop&w=1000&h=500" alt={{$randomPhotoResponse.description}}>
+        </div>
+        <p class='slider__caption'>{{$randomPhotoResponse.description}}</p>
+      </div>
     </ng-template>
   </ngb-carousel>
 </main>
