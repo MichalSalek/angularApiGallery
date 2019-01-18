@@ -38,16 +38,15 @@ export class SearchComponent implements OnInit {
   getPhotosList() {
     this.gService.photoList().subscribe(
       res => {
-      this.$searchPhotoResponse = res;
-    },
-    (error: HttpErrorResponse) => {
-      console.warn(error);
-      console.error(error.status);
-      this.$searchPhotoResponse.results.push(this.errorResponse);
-    },
-    () => {
-      console.log(this.$searchPhotoResponse);
-    });
+        this.$searchPhotoResponse = res;
+      },
+      (error: HttpErrorResponse) => {
+        console.warn(error);
+        console.error(error.status);
+        if (error.status === 403) {
+          this.$searchPhotoResponse.results.push(this.errorResponse);
+        }
+      });
   }
 
 

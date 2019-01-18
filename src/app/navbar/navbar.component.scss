@@ -1,5 +1,6 @@
 @import '../../globalVariables.scss';
 
+
 .navbar {
   width: 85vw;
   max-width: 1080px;
@@ -13,12 +14,8 @@
   }
 }
 
-@media all and (orientation:landscape) {
+@media all and (max-width: 500px) and (orientation:landscape) {
   .navbar {
     margin: .3rem auto;
-    &__btn {
-      max-height: 40px;
-      font-size: 1rem;
-    }
   }
 }
