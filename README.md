@@ -1,6 +1,12 @@
 # AngularGalleryApp
 
-This app use Unsplash API.
+This app use Unsplash API. 
+
+Development purposes only:
+www.thismoment.eu
+
+Rights for pictures:
+www.unsplash.com
 
 ## Development server
 
